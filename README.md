@@ -15,5 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-
+# GameWidget
+GameWidget is a Flutter Widget that is used to insert a Game inside the Flutter Widget Tree.
+# FlameGame 
 
