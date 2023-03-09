@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flametutorial/components/my_component.dart';
 
 class MyGame extends FlameGame {
 
@@ -13,12 +14,17 @@ class MyGame extends FlameGame {
   bool get debugMode => true;
 
   /// We change the background color overriding this method
+  /// We cannot change background color dynamically while the game is running,
+  /// but we can draw a background color that covers the whole canvas if we want
+  /// to change it dynamically.
   @override
-  Color backgroundColor() => const Color.fromARGB(255, 96, 145, 112);
+  Color backgroundColor() => const Color.fromARGB(255, 255, 255, 112);
 
   @override
   Future<void> onLoad() async{
     final flameSprite = await loadSprite('flame.png');
+
+    add(MyComponent(radius: 100, position: camera.viewport.effectiveSize/2));
 
     await add(SpriteComponent(
       position: camera.viewport.effectiveSize / 2,
@@ -26,7 +32,7 @@ class MyGame extends FlameGame {
       size: Vector2(100, 150)
     )..anchor = Anchor.center
     );
-    startBgmMusic();
+    // startBgmMusic();
   }
 
   void startBgmMusic() {
